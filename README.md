@@ -12,10 +12,8 @@
 	Temperature Sensor (DHT11/DHT22/TMP36)
 
 # Circuit Diagram:
+![WhatsApp Image 2025-09-16 at 14 46 08_d8cf951b](https://github.com/user-attachments/assets/05711029-31d0-490b-9d9d-ffe66fe7cb7c)
 
----
-To upload
---
 
 # Procedure // Modify the procedure based on your circuit
 
@@ -56,13 +54,41 @@ Step 7: Save Your Work
 
 
 # Program
+```
+void setup()
+{
+  pinMode(12,OUTPUT);
+  pinMode(13,OUTPUT);
+  pinMode(A0,INPUT);
+  Serial.begin(9600);
 
----
-To upload
---
+}
+
+void loop()
+{
+  float value=analogRead(A0);
+  float temperatureC=((((value*5)/1023)-0.5)*100);
+  Serial.println("temperature");
+  Serial.println(temperatureC);
+  
+  if(temperatureC > 20)
+  {
+    digitalWrite(12,HIGH);
+    digitalWrite(13,LOW);
+  }
+  else
+  {
+    digitalWrite(12,LOW);
+    digitalWrite(13,LOW);
+  }
+}
+```
+# output:
+
+
+https://github.com/user-attachments/assets/e8e3b14a-3b2c-4ddb-80c7-037df930ff46
+
 
 # Result
-
----
-To upload
---
+temperature
+27.4
